@@ -36,6 +36,7 @@
                             @error('slug')
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
+                            
                         </div>
                         <button type="submit"
                             class="btn btn-danger">Submit</button>
