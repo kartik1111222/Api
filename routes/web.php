@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', [LoginController::class, 'login'])->name('login');
+// Route::post('/', [LoginController::class, 'login_check'])->name('login_check');
+// Route::get('logout', [LoginController::class,'logout'])->name('logout');
+
+// Route::prefix('user')->name('user.')->group(function(){
+//    Route::get('dashboard', [LoginController::class,'dashboard'])->name('dashboard');
+//    Route::get('message/index', [MessageController::class, 'index'])->name('message');
+//    Route::get('message/send', [MessageController::class, 'send'])->name('messagesend');
+// });
+
+Route::get('/', function(){
+return view('welcome');
+});
+
+Route::get('test', function () {
+	event(new App\Events\StatusLiked('Someone'));
+	return "Event has been sent!";
 });
 
 Route::resource('categories', CategoryController::class);
+
+
