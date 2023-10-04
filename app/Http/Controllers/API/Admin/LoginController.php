@@ -10,6 +10,8 @@ class LoginController extends Controller
 {
     public function admin_login(Request $request){
         
+
+        
         $credetials = [
             'email' => $request->email,
             'password' => $request->password,

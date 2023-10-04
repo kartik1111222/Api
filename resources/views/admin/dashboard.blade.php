@@ -7,27 +7,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-5">
-           <form action="{{route('login_check')}}" method="POST">
-            @csrf
-            <h2>Login Here:</h2>
-            Name:
-            <input type="email" name="email" class="form-control"><br>
-
-            Password:
-            <input type="password" name="password" class="form-control"><br>
-            
-           
-              <button type="submit" class="btn btn-block btn-primary ">Login</button>
-
-           </form>
-        </div>
-
-      </div>
-
+    <div class="text-right">
+       <a href="{{route('logout')}}" class="btn btn-primary">Logout</a>
     </div>
+    Admin Dashboard <br><br>
+    <a href="{{route('admin.user.index')}}" class="btn btn-primary">Add New User</a>
+    <!-- <a href="{{route('admin.role.index')}}" class="btn btn-danger">Add Role & Permission</a> -->
+    <a href="{{route('product.index')}}" class="btn btn-dark">Products</a>
+    <a href="{{route('admin.manage_role.index')}}" class="btn btn-danger">Manage Roles</a>
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

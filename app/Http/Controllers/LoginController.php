@@ -12,11 +12,16 @@ class LoginController extends Controller
     }
 
     public function login_check(Request $request){
-        if(Auth::attempt($request->only('email', 'password'))){
-          return redirect()->route('user.dashboard');
-        }else{
-            return redirect()->route('login');
-        }
+       if(Auth::attempt($request->only('email','password'))){
+          $user = Auth::user();
+          if($user->role == 'Admin'){
+             return redirect()->route('admin.dashboard');
+          }else{
+            return redirect()->route('user.dashboard');
+          }
+       }else{
+        return redirect()->route('login');
+       }
     }
 
     public function logout(){

@@ -1,36 +1,29 @@
 <?php
- 
 namespace App\Events;
- 
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
- 
-class NewOrder implements ShouldBroadcast
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
+
+class TestEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    
-    private $order;
- 
+
+    public $data = [];
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($data=[])
+    public function __construct($data = [])
     {
-        $this->order = $data;
+        $this->data = $data;
     }
- 
-    public function broadcastWith()
-    {
-        return $this->order;
-    }
- 
+
     /**
      * Get the channels the event should broadcast on.
      *
@@ -38,6 +31,6 @@ class NewOrder implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('orders');
+        return new Channel('TestEvent');
     }
 }

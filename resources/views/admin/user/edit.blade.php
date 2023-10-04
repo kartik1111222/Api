@@ -10,17 +10,17 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-5">
-           <form action="{{route('login_check')}}" method="POST">
+           <form action="{{route('admin.user.update', $data['id'])}}" method="POST">
             @csrf
-            <h2>Login Here:</h2>
+            @method('PUT')
+            <h2>Update User:</h2>
             Name:
-            <input type="email" name="email" class="form-control"><br>
+            <input type="text" name="name" class="form-control" value="{{$data['name']}}"><br>
 
-            Password:
-            <input type="password" name="password" class="form-control"><br>
-            
-           
-              <button type="submit" class="btn btn-block btn-primary ">Login</button>
+            Email:
+            <input type="email" name="email" class="form-control" value="{{$data['email']}}"><br>
+
+            <button type="submit" class="btn btn-block btn-primary ">Update</button>
 
            </form>
         </div>
